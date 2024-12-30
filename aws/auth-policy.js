@@ -61,8 +61,9 @@ function AuthPolicy(principal, awsAccountId, apiOptions) {
    * @type {RegExp}
    * @default '^\/[/.a-zA-Z0-9-\*]+$'
    */
-  this.pathRegex = new RegExp('^[/.a-zA-Z0-9-\*]+$');
-
+  //this.pathRegex = new RegExp('^[/.a-zA-Z0-9-\*]+$');
+  this.pathRegex = new RegExp('^[/.a-zA-Z0-9-\*]+[$?a-zA-Z0-9-]*$');
+ 
   // these are the internal lists of allowed and denied methods. These are lists
   // of objects and each object has 2 properties: A resource ARN and a nullable
   // conditions statement.

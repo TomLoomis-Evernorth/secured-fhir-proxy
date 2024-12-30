@@ -38,3 +38,15 @@ module.exports.udapConfigHandler = async (event, context) => {
 		}
 	}
 }
+
+module.exports.fhirMetadataHandler = async (event) => {
+	var fhirMetaDataResult = await metadataLib.fhirMetadataHandler(event.pathParameters.tenantId,event.path)
+	return {
+		statusCode: 200,
+		body: JSON.stringify(fhirMetaDataResult),
+		headers: {
+			'Access-Control-Allow-Origin': '*', // CORS
+			'Access-Control-Allow-Credentials': false // Required for cookies, authorization headers with HTTPS
+		}
+	}
+}
